@@ -29,10 +29,11 @@ TreeSet<Integer> tree;
 	void heightTest() {
 		assertEquals(5, tree.height());
 	}
-//	@Test
-//	void displayTreeTest() {
-//		tree.displayTree();
-//	}
+	@Test
+	void displayTreeTest() {
+		tree.displayTree();
+		System.out.println("****************************************");
+	}
 	@Test
 	void maxBranchSumTest() {
 		TreeSet<Integer> tree1 = getTreeForTest();
@@ -40,12 +41,29 @@ TreeSet<Integer> tree;
 	}
 
 	private TreeSet<Integer> getTreeForTest() {
-		// TODO create tree on the slide #38
-		return null;
+		Integer [] numbers = {4, 6, 11, 21, 7, 5};
+		TreeSet<Integer> tree = new TreeSet<>((a, b) -> getDigitsSum(a) - getDigitsSum(b));
+		for(int num: numbers) {
+			tree.add(num);
+		}
+		tree.displayTree();
+		System.out.println("*************************************");
+		return tree;
 	}
+	private int getDigitsSum(Integer a) {
+		int res = 0;
+		do {
+			res += a % 10;
+			a /= 10;
+			
+		}while (a != 0);
+		return res;
+	}
+
 	@Test
 	void displayTreeFileSystemTest() {
 		tree.displayTreeFileSystem();
+		System.out.println("****************************************************************");
 	}
 
 }
